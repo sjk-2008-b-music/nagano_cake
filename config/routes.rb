@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
   get "/about" => "abouts#about"
-  get 'items/:id' => 'items#show'
+  get 'items/:id' => 'items#show', as: 'item'
   resources :end_users, only: [:edit, :update]
   get 'end_users/my_page' => 'end_users#show'
   get 'end_users/unsubscribe' => 'end_users#unsubscribe'
