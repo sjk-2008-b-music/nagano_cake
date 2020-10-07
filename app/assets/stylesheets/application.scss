@@ -18,21 +18,31 @@
 
 /* common */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
 header {
     color: white;
 }
 
 .body {
     margin-top: 51px;
+}
+
+.title{
+    margin-top: 30px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+.action {
+    margin-top: 20px;
+}
+
+.text{
+    margin-top: 10px;
 }
