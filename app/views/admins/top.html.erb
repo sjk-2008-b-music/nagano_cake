@@ -1,3 +1,10 @@
 <div class="body">
-<h1>admin#top</h1>
+  <div class="container">
+    <h3 class="title">管理者画面</h3>
+    <h2>本日の注文数：
+      <%= link_to admins_orders_path do %>
+        <%= @orders.count %>
+      <% end %>
+    件</h2>
+  </div>
 </div>

@@ -1,3 +1,73 @@
 <div class="body">
-<h1>end_users#show</h1>
+  <div class="container">
+    <h3>
+      <%= @end_user.last_name+@end_user.first_name %>
+        さんの会員情報
+    </h3>
+
+    <div class="row title">
+      <div>
+        <label class="col-xs-2">会員ID</label>
+        <div class="col-xs-10">
+          <%= @end_user.id %>
+              <% if @end_user.is_deleted %>
+              <span class="label label-warning">
+                退会済
+              <% else %>
+              <span class="label label-info">
+                有効
+              <% end %>
+            </span>
+        </div>
+      </div>
+
+      <div>
+        <label class="col-xs-2">氏名</label>
+        <div class="col-xs-10">
+          <%= @end_user.last_name+@end_user.first_name %>
+        </div>
+      </div>
+
+      <div>
+        <label class="col-xs-2">フリガナ</label>
+        <div class="col-xs-10">
+          <%= @end_user.last_name_kana+@end_user.first_name_kana %>
+        </div>
+      </div>
+
+      <div>
+        <label class="col-xs-2">郵便番号</label>
+        <div class="col-xs-10">
+          <%= @end_user.postal_code %>
+        </div>
+      </div>
+
+      <div>
+        <label class="col-xs-2">住所</label>
+        <div class="col-xs-10">
+          <%= @end_user.address %>
+        </div>
+      </div>
+
+      <div>
+        <label class="col-xs-2">電話番号</label>
+        <div class="col-xs-10">
+          <%= @end_user.telephone_number %>
+        </div>
+      </div>
+
+      <div>
+        <label class="col-xs-2">メールアドレス</label>
+        <div class="col-xs-10">
+          <%= @end_user.email %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="action">
+      <%= link_to "編集する", edit_admins_end_user_path(@end_user), class: "btn btn-primary" %>
+        <%= link_to "注文履歴一覧を見る", admins_orders_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
