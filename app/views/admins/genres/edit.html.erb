@@ -1,3 +1,20 @@
-<div class="body">
-<h1>genres#edit</h1>
+<div class="container">
+     <div class="row">
+		<div class="body">
+			<h1>genres#edit</h1>
+			<h1>ジャンル編集</h1>
+		</div>
+
+		<div class="body">
+			<%= form_with model: [:admins, @genre], local: true do |f| %>
+    			<p>ジャンル</p>
+					<%= f.text_field :name, class: "name" %>
+    				<%= f.label :is_active, :有効 %>
+    				<%= f.radio_button :is_active, true %>
+    				<%= f.label :is_active, :無効 %>
+    				<%= f.radio_button :is_active, false %>
+    				<%= f.submit '変更を保存する' %>
+			 <% end %>
+		</div>
+	</div>
 </div>
