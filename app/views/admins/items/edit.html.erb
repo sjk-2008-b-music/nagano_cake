@@ -1,3 +1,48 @@
-<div class="body">
-<h1>items#edit</h1>
+<div class="container">
+     <div class="row">
+     	<div class="body">
+			<h1>商品編集</h1>
+
+			<%= attachment_image_tag(@item, :image, :fill, 400, 400, fallback: "no-image.png") %></td>
+
+
+			<%= form_with model: [:admins, @item], local: true do |f| %>
+
+				<div class="field">
+					<%= f.attachment_field :image, class: "submit" "ファイルを選択" %>
+				</div>
+
+				<div class="field">
+					<label>商品名</label>
+					<%= f.text_field :name, class: "item_name" %>
+				</div>
+
+				<div class="field">
+					<label>商品説明</label>
+					<%= f.text_area :introduction, class: "item_introduction" %>
+				</div>
+
+				<div class="field">
+					<label>ジャンル</label>
+					<%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "選択して下さい" %>
+				</div>
+
+				<div class="field">
+					<label>税抜価格</label>
+					<%= f.text_field :price, class: "item_price" %>円
+				</div>
+
+				<div class="field">
+					<label>販売ステータス</label>
+					<%= f.select :is_active, [["販売中", true], ["販売停止中", false]], include_blank: "選択して下さい" %>
+				</div>
+
+				<div class="actions">
+					<%= f.submit '変更を保存', class: "update" "変更を保存" "btn btn-primary" %>
+				</div>
+
+			<% end %>
+
+		</div>
+	</div>
 </div>

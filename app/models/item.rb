@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
 
-mount_uploader :image_id, ImageUploader
-
+	belongs_to :genre
+	attachment :image
+	has_many :order_details, dependent: :destroy
 end

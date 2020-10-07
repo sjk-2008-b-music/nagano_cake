@@ -1,3 +1,44 @@
-<div class="body">
-<h1>items#new</h1>
+<div class="container">
+     <div class="row">
+		<div class="body">
+		<h1>商品新規登録</h1>
+
+			<%= form_with model: [:admins, @item], local: true do |f| %>
+				<div class="field">
+					<%= f.label :商品画像 %>
+					<%= f.attachment_field :image, class: "submit" %>
+				</div>
+
+				<div class="field row">
+					<%= f.label :商品名 %>
+					<%= f.text_field :name, class: "item_name" %>
+				</div>
+
+				<div class="field row">
+					<%= f.label :商品説明 %>
+					<%= f.text_area :introduction, class: "item_introduction" %>
+				</div>
+
+				<div class="field row">
+					<%= f.label :ジャンル %>
+					<%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "選択して下さい" %>
+				</div>
+
+				<div class="field row">
+					<%= f.label :税抜価格 %>
+					<%= f.text_field :price, class: "item_price" %>円
+				</div>
+
+				<div class="field row">
+					<%= f.label :販売ステータス %>
+					<%= f.select :is_active, [["販売中", "販売中"], ["売切", "売切"]], include_blank: "選択して下さい" %>
+				</div>
+
+				<div class="actions row">
+					<%= f.submit class: "btn btn-primary" %>
+				</div>
+			<% end %>
+
+		</div>
+	</div>
 </div>
