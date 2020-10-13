@@ -1,3 +1,32 @@
 <div class="body">
-<h1>items#index</h1>
+
+<div class="sidebar">
+	<h3>ジャンル検索</h3>
+	<nav>
+		<ul>
+			<%= link_to 'ケーキ', items_path %>
+			<%= link_to '焼き菓子', items_path %>
+			<%= link_to 'プリン', items_path %>
+			<%= link_to 'キャンディー', items_path %>
+		</ul>
+	</nav>
+</div>
+
+<h1>商品一覧</h1>
+<% @items.each do |item| %>
+		<div class="">
+			<%= attachment_image_tag(@item, :image, :fill, 50, 50) %>
+			<div class="">
+				商品名
+				<%= link_to item_path(item) do %>
+				<%= item.name %>
+				<% end %>
+			</div>
+			<div class="">
+				￥
+				<%= item.price %>
+			</div>
+		</div>
+	<% end %>
+
 </div>
