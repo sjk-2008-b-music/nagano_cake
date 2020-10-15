@@ -66,7 +66,7 @@
                   <%= order_detail.total_price %>
                 </td>
                 <td>
-                  <%= form_for(order_detail,url: {controller: "order_details", action: "update"}) do |f| %>
+                  <%= form_for order_detail,url: admins_order_detail_path(order_detail.id) do |f| %>
                     <%= f.select :making_status, OrderDetail.making_statuses.keys.to_a, {} %>
                       <%= f.submit '更新' %>
                         <% end %>

@@ -24,7 +24,6 @@ class EndUsersController < ApplicationController
 	# withdraw退会処理を実行する、:rootはroot_pathに変更
 	def withdraw
 		@end_user = current_end_user
-    	# @end_user.destroy
     	@end_user.update(is_deleted: true)
     	reset_session
     	redirect_to root_path

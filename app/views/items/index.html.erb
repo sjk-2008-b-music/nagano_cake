@@ -1,32 +1,38 @@
 <div class="body">
+	<div class="container">
+		<div class="row">
 
-<div class="sidebar">
-	<h3>ジャンル検索</h3>
-	<nav>
-		<ul>
-			<%= link_to 'ケーキ', items_path %>
-			<%= link_to '焼き菓子', items_path %>
-			<%= link_to 'プリン', items_path %>
-			<%= link_to 'キャンディー', items_path %>
-		</ul>
-	</nav>
-</div>
+			<div class="col-ls-3">
+  				<div class="border">
+					<h4 class="genres_title"><strong>ジャンル検索</strong></h4>
+						<nav>
+							<ul>
+								<div class="genres_list">
+									<li class="genres_list_item"><%= link_to 'ケーキ', items_path %></li>
+									<li class="genres_list_item"><%= link_to '焼き菓子', items_path %></li>
+									<li class="genres_list_item"><%= link_to 'プリン', items_path %></li>
+									<li class="genres_list_item"><%= link_to 'キャンディー', items_path %></li>
+								</div>
+							</ul>
+						</nav>
+				</div>
+			</div>
 
-<h1>商品一覧</h1>
-<% @items.each do |item| %>
-		<div class="">
-			<%= attachment_image_tag(@item, :image, :fill, 50, 50) %>
-			<div class="">
-				商品名
-				<%= link_to item_path(item) do %>
-				<%= item.name %>
+				<div class="col-ls-9">
+				<h2><strong class="item_index">商品一覧</strong></h2>
+					<% @items.each do |item| %>
+						<div class="recommend_item">
+							<%= link_to item_path(item) do %>
+								<%= attachment_image_tag(item, :image, :fill, 100, 100) %>
+							<% end %>
+
+							<strong>
+								<li class="item_name"><%= item.name %></li>
+							</strong>
+							<strong class="price">￥<%= item.price %></strong>
+						</div>
 				<% end %>
 			</div>
-			<div class="">
-				￥
-				<%= item.price %>
-			</div>
 		</div>
-	<% end %>
-
+	</div>
 </div>

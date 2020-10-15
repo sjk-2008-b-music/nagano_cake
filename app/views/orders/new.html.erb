@@ -1,49 +1,84 @@
+<div class="container">
+     <div class="row">
 <div class="body">
-<h3>注文情報入力</h3>
+	<h3 class="order_new"><span class="order-nyuuryoku">注文情報入力</span></h3>
+		<div class="order">
+			<%= form_with(model: @order, local: true, url:order_comfirm_path(@orders)) do |f| %>
+				<h3><strong>支払方法</strong></h3>
+					<div class="payment_method">
+						<strong class="senntakusi">
+							<%= f.radio_button :payment_method, 0 %>クレジットカード
+						</strong>
+					</div>
 
-<%= form_with(model: @order, local: true, url:order_confirm_path(@orders)) do |f| %>
+					<div class="payment_method">
+						<strong class="senntakusi">
+							<%= f.radio_button :payment_method, 1 %>銀行振込
+						</strong>
+					</div>
 
-<h4><strong>支払方法</strong></h4>
-<label>
-	<%= f.radio_button :payment_method, "クレジットカード" %>クレジットカード
-</label>
-<label>
-	<%= f.radio_button :payment_method, "銀行振込" %>銀行振込
-</label>
+					<h3><strong>お届け先</strong></h3>
+						<div class="address_all">
+							<div class="address">
+								<strong class="senntakusi">
+									<%= f.radio_button :id, '1' %>ご自身の住所
+								</strong>
+							</div>
+							<div class="address">
+								<div class="address_text">
+									<%= @end_user.postal_code %>
+									<%= @end_user.address %>
+								</div>
+							</div>
+							<div class="address">
+								<div class="address_text">
+									<%= @end_user.last_name %>
+									<%= @end_user.first_name %>
+								</div>
+							</div>
 
-<h4><strong>お届け先</strong></h4>
-<label>
-	<%= f.radio_button :id, '1' %>ご自身の住所
-	<%= @end_user.postal_code %>
-	<%= @end_user.address %>
-	<%= @end_user.last_name %>
-	<%= @end_user.first_name %>
-</label>
-<label>
-	<%= f.radio_button :id, '2' %>登録済住所から選択
-	<%= f.collection_select :end_user_id, @address, :id,  :name %>
-</label>
-<label>
-	<%= f.radio_button :id, '3' %>新しいお届け先
-	<div class="">
-		郵便番号（ハイフンなし）
-		<%= f.text_field :postal_code %>
+							<div class="address">
+								<strong class="senntakusi">
+									<%= f.radio_button :id, '2' %>登録済住所から選択
+								</strong>
+								<div class="tourokusumi">
+									<%= f.collection_select :end_user_id, @address, :id, :view_address_and_name %>
+								</div>
+							</div>
+
+							<div class="address">
+								<strong class="senntakusi">
+									<%= f.radio_button :id, '3' %>新しいお届け先
+								</strong>
+							</div>
+
+							<div class="address">
+								<div class="address_text">
+									郵便番号（ハイフンなし）<br>
+									<%= f.text_field :postal_code %>
+								</div>
+							</div>
+
+							<div class="address">
+								<div class="address_text">
+									住所<br>
+									<%= f.text_area :address %>
+								</div>
+							</div>
+
+							<div class="address">
+								<div class="address_text">
+									宛名<br>
+									<%= f.text_field :name %>
+								</div>
+							</div>
+						</div>
+
+						<div class="kakuninn">
+							<%= f.submit '確認画面へ進む', class: "btn btn-primary"%>
+						</div>
+					<% end %>
+				</div>
+			</div>
 	</div>
-
-	<div class="">
-		住所
-		<%= f.text_area :address %>
-	</div>
-
-	<div class="">
-		宛名
-		<%= f.text_field :name %>
-	</div>
-
-	<div class="">
-		<%= f.submit '確認画面へ進む', class: "btn btn-primary"%>
-	</div>
-</label>
-<% end %>
-
 </div>

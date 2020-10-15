@@ -1,3 +1,66 @@
 // Place all the styles related to the end_users::cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+​
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+​
+.cart-item {
+	margin: 80px 0 0 100px;
+}
+​
+.cart-item-title {
+	background-color: #eeeeee;
+}
+​
+.delete_all {
+	margin-right: 80px;
+}
+​
+.goukeikinngaku {
+	width: 100px;
+}
+​
+.totale_price {
+	width: 100px;
+}
+​
+.total_price_all {
+	float: right;
+	border: solid 1px;
+	padding: 10px
+}
+​
+.jouhou {
+	text-align: center;
+	padding: 10px 0 ;
+}
+​
+table {
+	margin: 50px auto;
+	width: 1000px;
+	height: 150px
+}
+​
+table,th,td {
+border:solid 1px black;
+}
+​
+th {
+	background-color: #eeeeee;
+}
+​
+.shoping {
+	margin-left: 80px;
+}
+​
+​
+.total_price {
+	margin: 10px 0 10px 880px;
+	width: 200px;
+	height: 50px;
+}

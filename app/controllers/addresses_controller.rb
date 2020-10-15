@@ -5,7 +5,7 @@ class AddressesController < ApplicationController
   end
 
   def index
-  	@addresses = Address.all
+  	@addresses = Address.where(end_user_id: current_end_user.id)
     @address = Address.new
     @end_user = current_end_user
   end
@@ -17,6 +17,7 @@ class AddressesController < ApplicationController
 
   def create
   	@address = Address.new(address_params)
+    @address.end_user_id = current_end_user.id
     @address.save
   	redirect_to addresses_path
   end

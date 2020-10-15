@@ -1,9 +1,7 @@
 class CartItemsController < ApplicationController
 	# before_action :authenticate_end_user!
-
 	def index
-		@cart_items = CartItem.all
-
+		@cart_items = CartItem.where(end_user_id: current_end_user.id)
 	end
 
 	def update
@@ -27,11 +25,10 @@ class CartItemsController < ApplicationController
 	def create
 		@cart_items = CartItem.all
 		@end_user_item = current_end_user.cart_items.find_by(item_id: params[:item_id])
-		pp @end_user_item
+		@end_user_item
 		if @end_user_item.present?
 			@end_user_item.amount += params[:amount].to_i
 		else
-			# @end_user_item = @cart_items.build(item_id: params[:item_id])
 			@end_user_item = current_end_user.cart_items.new(cart_item_params)
 			@end_user_item.item_id = params[:item_id]
     	end
@@ -39,15 +36,12 @@ class CartItemsController < ApplicationController
     	redirect_to cart_items_path
 	end
 
-	private
-
-	 def cart_item_params
+private
+	def cart_item_params
 		 params.permit(:amount, :item_id, :end_user_id)
-     end
-
+    end
 
 	def setup_cart_item!
     	@cart_item = end_user.cart_items.find_by(item_id: params[:item_id])
   	end
-
 end

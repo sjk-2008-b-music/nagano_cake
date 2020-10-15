@@ -1,35 +1,45 @@
 <div class="body">
-<div class="container">
-<div class="row">
-  	<div class="col-lg-4">
-		<h4><strong>ジャンル検索</strong></h4>
-			<nav>
-				<ul>
-					<%= link_to 'ケーキ', items_path %>
-					<%= link_to '焼き菓子', items_path %>
-					<%= link_to 'プリン', items_path %>
-					<%= link_to 'キャンディー', items_path %>
-				</ul>
-			</nav>
+	<div class="container">
+		<div class="row">
+
+  			<div class="col-ls-3">
+  				<div class="border">
+					<h4 class="genres_title"><strong>ジャンル検索</strong></h4>
+
+						<nav>
+							<ul>
+								<div class="genres_list">
+									<li class="genres_list_item"><%= link_to 'ケーキ', item_path %></li>
+									<li class="genres_list_item"><%= link_to '焼き菓子', item_path %></li>
+									<li class="genres_list_item"><%= link_to 'プリン', item_path %></li>
+									<li class="genres_list_item"><%= link_to 'キャンディー', item_path %></li>
+								</div>
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+				<div class="col-ls-9">
+					<div class="main_show">
+						<%= form_with(model: @cart_item, local: true, url: cart_items_path) do |f| %>
+
+							<%= f.hidden_field :item_id, :value => @item.id %>
+
+								<%= attachment_image_tag @item, :image, :fill, 400, 400 %>
+
+									<h3><strong><%= @item.name %></strong></h3>
+
+									<div class="item_text"><%= @item.introduction %></div>
+
+									<strong class="item_price">￥<%= @item.price %></strong>（税込）
+
+									<div class="scroll">
+        								<%= f.select :amount, [["１", 1], ["２", 2],["3",3],["4",4],["5",5]], include_blank: "個数選択" %>
+										<%= f.submit 'カートに入れる', class: "btn btn-primary"%>
+									</div>
+						    <% end %>
+					</div>
+				</div>
+		</div>
 	</div>
-
-			<%= form_with(model: @cart_item, local: true, url: cart_items_path) do |f| %>
-
-				<%= f.hidden_field :item_id, :value => @item.id %>
-
-				<%#= attachment_image_tag @item, :image, :fill, 50, 100 %>
-
-				<h3><strong><%= @item.name %></strong></h3>
-
-				<%= @item.introduction %>
-
-				<strong>￥<%= @item.price %></strong>（税込）
-
-
-        	<%= f.select :amount, [["１", 1], ["２", 2],["3",3],["4",4],["5",5]], include_blank: "個数選択" %>
-
-			<%= f.submit 'カートに入れる', class: "btn btn-primary"%>
-        <% end %>
-</div>
-</div>
 </div>

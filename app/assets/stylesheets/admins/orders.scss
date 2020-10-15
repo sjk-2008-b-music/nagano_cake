@@ -1,3 +1,115 @@
 // Place all the styles related to the admins::orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+​
+.order-nyuuryoku {
+	background-color: #eeeeee;
+	margin-left: 200px;
+}
+​
+.order_new {
+	margin-top: 70px;
+}
+​
+.order {
+	margin-left: 50px;
+}
+​
+.payment_method {
+	padding: 5px 0;
+	margin-left: 50px;
+}
+​
+.address {
+	padding: 10px;
+}
+​
+.address_text {
+	padding-left: 15px
+}
+​
+.address_all {
+	display: block;
+	margin-left: 40px
+}
+​
+.kakuninn {
+	text-align: center;
+	margin-top: 20px;
+}
+​
+.senntakusi {
+	font-size: 17px;
+}
+​
+.tourokusumi {
+	margin-left: 15px;
+}
+​
+.table-confirm {
+	width: 600px;
+	height: 110px;
+	margin-left: 70px;
+	float: left
+}
+​
+table,th,td {
+	border:solid 1px black;
+}
+​
+th {
+	background-color: #eeeeee;
+}
+​
+.confirm_total_price {
+	width: 200px;
+	height: 110px;
+	float: right;
+	margin-right: 100px;
+}
+​
+.confirm_order {
+	margin-left: 70px;
+}
+​
+.confirm_payment_address {
+	font-size: 20px;
+	padding-right: 20px;
+}
+​
+.confirm_name {
+	margin-left: 100px;
+}
+​
+.confirm_payment_address_all {
+	margin-bottom: 40px;
+	padding: 10px;
+}
+​
+.confirm_payment {
+	margin-bottom: 20px;
+}
+​
+.kakutei {
+	text-align: center;
+}
+​
+.confirm_title {
+	background-color: #eeeeee;
+	margin-left: 100px;
+}
+​
+.confirm {
+	margin-top: 80px;
+}
+​
+.complete {
+	text-align: center;
+	margin-top: 300px;
+}

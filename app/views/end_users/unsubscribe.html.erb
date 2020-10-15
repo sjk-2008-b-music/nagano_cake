@@ -1,19 +1,15 @@
-<div class="body">
-<h1>end_users#unsbscribe</h1>
+<div class="container">
+     <div class="row">
+		<div class="body">
+			<h2>本当に退会しますか？</h2>
+				<p>退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。<br>
+					退会する場合は、「退会する」をクリックしてください。</p>
+
+				<%= link_to "退会しない", end_users_my_page_path(@end_user.id), class: "btn btn-success" %>
+				<%= link_to "退会する",end_users_withdraw_path, method: :patch, class: "btn btn-danger", data:{confirm: "Are you sure？"} %>
+		</div>
+	</div>
 </div>
-
-<h2>本当に退会しますか？</h2>
-
-<p>退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。<br>
-退会する場合は、「退会する」をクリックしてください。</p>
-
-
-<%= link_to "退会しない", end_users_my_page_path(@end_user.id), class: "btn btn-success" %>
-<%= link_to "退会する",end_users_withdraw_path, method: :patch, class: "btn btn-danger", data:{confirm: "Are you sure？"} %>
-
-</div>
-
-
 <!-- 退会しないボタンのパス名、ボタンの横ならび、退会するボタンのバリデーションかけるか -->
 
 <!-- https://qiita.com/facultyoflaw11/items/664c5c0fa0cd09bece38 -->

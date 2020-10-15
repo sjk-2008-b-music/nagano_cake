@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_050204) do
+ActiveRecord::Schema.define(version: 2020_10_13_052650) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "postal_code"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_050204) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "end_user_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -30,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_09_30_050204) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "end_user_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_050204) do
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -75,6 +85,8 @@ ActiveRecord::Schema.define(version: 2020_09_30_050204) do
     t.integer "making_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -82,11 +94,12 @@ ActiveRecord::Schema.define(version: 2020_09_30_050204) do
     t.string "address"
     t.string "name"
     t.integer "shipping_cost"
-    t.integer "payment_method", default: 0
-    t.integer "status", default: 0
+    t.integer "payment_method"
+    t.integer "status", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_payment"
+    t.integer "end_user_id"
   end
 
 end
